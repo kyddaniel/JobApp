@@ -1,18 +1,39 @@
 package com.kyddaniel.JobApp;
 
+import com.kyddaniel.JobApp.model.JobPost;
+import com.kyddaniel.JobApp.service.JobService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.List;
+
+@RestController
 public class JobController {
+
+    @Autowired
+    private JobService service;
 
     @RequestMapping({"/", "home"})
     public String home() {
         return "home";
     }
 
-    @RequestMapping("addjob")
+    @GetMapping("addjob")
     public String addJob() {
         return "addjob";
+    }
+
+    @PostMapping("handleForm")
+    public String handleForm(JobPost jobPost) {
+        service.addJob(jobPost);
+        return "success";
+    }
+
+    @GetMapping("/jobPosts")
+    public List<JobPost> getAllJobs() {
+        return service.getAllJobs();
     }
 }
