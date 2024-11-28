@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class JobController {
 
     @Autowired
@@ -35,5 +36,10 @@ public class JobController {
     @GetMapping("/jobPosts")
     public List<JobPost> getAllJobs() {
         return service.getAllJobs();
+    }
+
+    @GetMapping("/jobPost/{postId}")
+    public JobPost getJob(@PathVariable("postId") int postId) {
+        return service.getJob(postId);
     }
 }
