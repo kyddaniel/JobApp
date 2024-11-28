@@ -34,6 +34,7 @@ public class JobController {
     }
 
     @GetMapping("/jobPosts")
+    //@GetMapping(path="/jobPosts", produces = {"application/json"}) limit the type of response body as JSON
     public List<JobPost> getAllJobs() {
         return service.getAllJobs();
     }
@@ -44,6 +45,7 @@ public class JobController {
     }
 
     @PostMapping("/jobPost")
+    //@GetMapping(path="/jobPost", consumes = {"application/xml"}) limit the type of request body as XML
     public JobPost addJob(@RequestBody JobPost jobPost) {
         service.addJob(jobPost);
         return service.getJob(jobPost.getPostId());
