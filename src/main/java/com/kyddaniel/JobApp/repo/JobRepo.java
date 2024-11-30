@@ -10,10 +10,13 @@ import java.util.List;
 @Repository
 public interface JobRepo extends JpaRepository<JobPost, Integer> {
 
+    List<JobPost> findByPostProfileContainingOrPostDescContaining(String postProfile, String postDesc);
+}
 
-    // Backup for JDBC implementations
-    // *****************************************************************************************************************
-    // *****************************************************************************************************************
+
+// Backup for JDBC implementations
+// *****************************************************************************************************************
+// *****************************************************************************************************************
 
 
     // arrayList to store JobPost objects
@@ -158,5 +161,5 @@ public interface JobRepo extends JpaRepository<JobPost, Integer> {
                 jobs.remove(jobPost);
             }
         }
-    }*/
-}
+    }
+}*/

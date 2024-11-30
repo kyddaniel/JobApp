@@ -44,6 +44,11 @@ public class JobController {
         return service.getJob(postId);
     }
 
+    @GetMapping("jobPosts/keyword/{keyword}")
+    public List<JobPost> searchByKeyword(@PathVariable("keyword") String keyword) {
+        return service.search(keyword, keyword);
+    }
+
     @PostMapping("/jobPost")
     //@GetMapping(path="/jobPost", consumes = {"application/xml"}) limit the type of request body as XML
     public JobPost addJob(@RequestBody JobPost jobPost) {

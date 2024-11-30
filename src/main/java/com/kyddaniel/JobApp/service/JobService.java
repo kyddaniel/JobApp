@@ -30,6 +30,10 @@ public class JobService {
         //return repo.getJob(postId);
     }
 
+    public List<JobPost> search(String postProfile, String postDesc) {
+        return repo.findByPostProfileContainingOrPostDescContaining(postProfile, postDesc);
+    }
+
     public void updateJob(JobPost jobPost) {
         repo.save(jobPost);
         //repo.updateJob(jobPost);
