@@ -62,4 +62,10 @@ public class JobController {
         service.deleteJob(postId);
         return "Deleted";
     }
+
+    @GetMapping("load")
+    public String loadData() {
+        service.load();
+        return "Success";
+    }
 }
